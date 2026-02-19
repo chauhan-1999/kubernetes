@@ -6,11 +6,12 @@ metadata:
   annotations:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
+  ingressClassName: nginx
   rules:
     - http:
        paths:
          - pathType: Prefix
-           path: nginx
+           path: /nginx
            backend: 
             service:
               name: nginx-service
