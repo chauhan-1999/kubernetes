@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service
+  namespace: nginx
+spec:
+  selector:
+    app: nginx
+  ports:
+  - protocol: TCP
+    port: 80  #user's port [outer world]
+    targetPort: 80 #pod's port [pod's inside cluster]
+  type: ClusterIP

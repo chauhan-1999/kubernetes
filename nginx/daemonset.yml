@@ -1,0 +1,26 @@
+# deployment.yml == replicaset.yml
+# only need to change kind and no need to specify replicas
+# bc daemonset ensures atleast one pod must be assign to each worker node
+kind: DaemonSet
+apiVersion: apps/v1
+metadata:
+  name: nginx-daemonset
+  namespace: nginx
+spec:
+  selector:     # to match labels
+    matchLabels:
+      app: nginx # label must match this
+
+  # pod.yml config
+  template:
+    metadata:
+      name: nginx-daemonset-pod
+      labels: # add labels
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+  

@@ -1,0 +1,26 @@
+# deployment.yml == replicaset.yml
+# only need to change kind and name that's it
+kind: ReplicaSet
+apiVersion: apps/v1
+metadata:
+  name: nginx-replicaset
+  namespace: nginx
+spec:
+  replicas: 3   # no of pods/replicas
+  selector:     # to match labels
+    matchLabels:
+      app: nginx # label must match this
+
+  # pod.yml config
+  template:
+    metadata:
+      name: nginx-replicaset-pod
+      labels: # add labels
+        app: nginx
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:latest
+          ports:
+            - containerPort: 80
+  

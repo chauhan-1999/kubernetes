@@ -1,0 +1,11 @@
+kind: Pod         #resouce-Type
+apiVersion: v1    #version
+metadata:         #resource-Info
+ name: nginx-pod  #resouce-name
+ namespace: nginx #resource-namespace
+spec:             #resource-specification
+ containers:      #add multiple containers in the pod
+  - name: nginx   #container's Name
+    image: nginx:latest #container-img
+    ports:          #container's port
+     - containerPort: 80
