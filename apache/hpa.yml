@@ -1,0 +1,25 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: apache-hpa
+  namespace: apache
+
+spec:
+  scaleTargetRef:  #scale what? [pod,dep,replicaset etc]
+    #identification of deployment
+    kind: Deployment
+    name: apache-deployment
+    apiVersion: apps/v1
+
+  #define min-max replicas
+  minReplicas: 1
+  maxReplicas: 5 # Increased for better testing visibility
+
+  metrics:
+    #scales -> on what basis?
+    - type: Resource  #on the basis of resources
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 5  # 5% is more stable for testing
