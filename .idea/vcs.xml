@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/autoscaler" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/projects/full-stack_chatApp" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/django-notes-app" vcs="Git" />
   </component>
 </project>
